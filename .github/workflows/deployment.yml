@@ -29,7 +29,7 @@ jobs:
       - name: build and deploy to server
         run: |
           npm run build --if-present
-          cat ${{secrets.DEPLOY_KEY}} > deploy_key
+          echo "${{secrets.DEPLOY_KEY}}" > deploy_key
           chmod 600 ./deploy_key
           rsync -avz \
             -e "ssh -i ./deploy_key -o StrictHostKeyChecking=no" \
