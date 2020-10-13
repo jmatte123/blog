@@ -25,12 +25,8 @@ jobs:
       - name: install npm
         run: npm install
 
-      # Runs a single command using the runners shell
-      - name: display starting info
-        run: echo deploying to server!
-
       # Runs a set of commands using the runners shell
       - name: build and deploy to server
         run: |
           npm run build --if-present,
-          rsync -avz --rsh=rsh ./build/* 178.128.152.190:/var/www/the-anxious-turtle.com/  
+          rsync -avz ./build/* 178.128.152.190:/var/www/the-anxious-turtle.com/  
