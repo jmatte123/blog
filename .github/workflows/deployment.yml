@@ -32,16 +32,14 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: build
         run: npm run build --if-present
+      
+      - name: Install SSH key
+        uses: shimataro/ssh-key-action@v2
+        with:
+          key: ${{ secrets.SSH_KEY }}
+      
       - name: Sync
         env:
           dest: 'root@178.128.152.190:/var/www/the-anxious-turtle.com/html'
         run: |
-          echo "${{secrets.DEPLOY_KEY}}" > deploy_key
-          chmod 600 ./deploy_key
-          rsync -chav --delete \
-            -e 'ssh -i ./deploy_key -o StrictHostKeyChecking=no' \
-            --exclude /deploy_key \
-            --exclude /.git/ \
-            --exclude /.github/ \
-            --exclude /node_modules/ \
-            ./ ${{env.dest}}
+          rsync -chav ./build/* ${{env.dest}}
