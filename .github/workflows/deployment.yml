@@ -32,5 +32,5 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: build and deploy to server
         run: |
-          npm run build,
+          npm run build --if-present,
           rsync -avz ./build/* 178.128.152.190:/var/www/the-anxious-turtle.com/  
