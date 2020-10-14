@@ -7,9 +7,6 @@ import Title from './Title/Title'
 function App() {
   return (
     <div className="App">
-      <header>
-        The Anxious Turtle
-      </header>
       <NavBar />
       <Title />
       {/* <PostList /> */}
