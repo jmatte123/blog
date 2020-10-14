@@ -38,4 +38,4 @@ jobs:
         run: |
           echo "${{secrets.DEPLOY_KEY}}" > deploy_key
           chmod 600 ./deploy_key
-          ssh -vT -i ./deploy_key ${{env.dest}}
+          ssh -vT -i ./deploy_key -o StrictHostKeyChecking=no ${{env.dest}}
