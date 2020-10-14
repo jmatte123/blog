@@ -25,7 +25,9 @@ jobs:
         with:
           version: 12.x
       - name: pwd
-        run: pwd
+        run: |
+         pwd
+         ls -la
       - name: install npm
         run: npm install
       - name: build
