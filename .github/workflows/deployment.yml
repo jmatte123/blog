@@ -24,6 +24,8 @@ jobs:
           version: 12.x
       - name: install npm
         run: npm install
+      - name: cd to website
+        run: cd website
       - name: build
         run: npm run build --if-present
       - name: Sync
