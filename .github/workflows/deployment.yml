@@ -33,12 +33,14 @@ jobs:
             --exclude /node_modules/ \
             ./server/* ${{env.dest}}
           
-      - name: cd website
-        run: cd website/
       - name: install npm (website)
-        run: npm install
+        run: |
+          cd website/
+          npm install
       - name: build
-        run: npm run build --if-present
+        run: |
+          cd website/
+          npm run build --if-present
       - name: Website Sync
         env:
           dest: 'joematte@178.128.152.190:/var/www/the-anxious-turtle.com/website'
@@ -47,4 +49,4 @@ jobs:
           chmod 600 ./deploy_key
           rsync -chav \
             -e 'ssh -i ./deploy_key -o StrictHostKeyChecking=no' \
-            ./build/* ${{env.dest}}
+            ./website/build/* ${{env.dest}}
