@@ -34,7 +34,7 @@ jobs:
             ./server/* ${{env.dest}}
           
       - name: cd website
-        run: cd /website
+        run: cd website/
       - name: install npm (website)
         run: npm install
       - name: build
