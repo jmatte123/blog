@@ -26,7 +26,6 @@ jobs:
         env:
           dest: 'joematte@178.128.152.190:/var/www/the-anxious-turtle.com/server'
         run: |
-          cd server
           echo "${{secrets.DEPLOY_KEY}}" > deploy_key
           chmod 600 ./deploy_key
           rsync -chav \
@@ -34,8 +33,6 @@ jobs:
             --exclude /node_modules/ \
             ./server/* ${{env.dest}}
           
-      - name: cd to website
-        run: cd website
       - name: install npm (website)
         run: npm install
       - name: build
@@ -48,4 +45,4 @@ jobs:
           chmod 600 ./deploy_key
           rsync -chav \
             -e 'ssh -i ./deploy_key -o StrictHostKeyChecking=no' \
-            ./build/* ${{env.dest}}
+            .website/build/* ${{env.dest}}
