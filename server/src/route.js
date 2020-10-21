@@ -2,8 +2,14 @@ const express = require("express")
 const Post = require("./post")
 const router = express.Router()
 
+router.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
+
 router.get("/posts", async (req, res) => {
-	const posts = await Post.find();
+	const posts = await Post.find({});
 	res.send(posts);
 });
 

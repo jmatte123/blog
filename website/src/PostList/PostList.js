@@ -1,71 +1,63 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import GridList from '@material-ui/core/GridList';
-import GridListTile from '@material-ui/core/GridListTile';
-import GridListTileBar from '@material-ui/core/GridListTileBar';
-import ListSubheader from '@material-ui/core/ListSubheader';
-import IconButton from '@material-ui/core/IconButton';
-import InfoIcon from '@material-ui/icons/Info';
-import tileData from './tileData';
+import Paper from '@material-ui/core/Paper';
+import Grid from '@material-ui/core/Grid';
+import Container from '@material-ui/core/Container';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    justifyContent: 'space-around',
-    overflow: 'hidden',
-    backgroundColor: theme.palette.background.paper,
+    flexGrow: 1,
   },
-  gridList: {
-    width: 500,
-    height: 450,
-  },
-  icon: {
-    color: 'rgba(255, 255, 255, 0.54)',
+  paper: {
+    padding: theme.spacing(2),
+    textAlign: 'center',
+    color: theme.palette.text.secondary,
+    height: 200
   },
 }));
 
-/**
- * The example data is structured as follows:
- *
- * import image from 'path/to/image.jpg';
- * [etc...]
- *
- * const tileData = [
- *   {
- *     img: image,
- *     title: 'Image',
- *     author: 'author',
- *   },
- *   {
- *     [etc...]
- *   },
- * ];
- */
-export default function TitlebarGridList() {
+export default function PostList() {
   const classes = useStyles();
+  const [data, setData] = useState(null);
+
+  useEffect(() => {   // Update the document title using the browser API    
+    async function fetchData() {
+      const response = await fetch('https://the-anxious-turtle.com/api/posts');
+      const myJson = await response.json();
+      console.log(JSON.stringify(myJson));
+      setData(myJson);
+    };
+    fetchData();
+  }, []);
+
+  function showData() {
+    if (data !== null) {
+      return data[0].title;
+    }
+  };
 
   return (
-    <div className={classes.root}>
-      <GridList cellHeight={180} className={classes.gridList}>
-        <GridListTile key="Subheader" cols={2} style={{ height: 'auto' }}>
-          <ListSubheader component="div">December</ListSubheader>
-        </GridListTile>
-        {tileData.map((tile) => (
-          <GridListTile key={tile.img}>
-            <img src={tile.img} alt={tile.title} />
-            <GridListTileBar
-              title={tile.title}
-              subtitle={<span>by: {tile.author}</span>}
-              actionIcon={
-                <IconButton aria-label={`info about ${tile.title}`} className={classes.icon}>
-                  <InfoIcon />
-                </IconButton>
-              }
-            />
-          </GridListTile>
-        ))}
-      </GridList>
-    </div>
+    <Container maxWidth="md">
+      <div className={classes.root}>
+        <Grid container spacing={3}>
+          <Grid item lg>
+            <Paper className={classes.paper}>
+              {showData()}
+            </Paper>
+          </Grid>
+        </Grid>
+        {/* <Grid container spacing={3}>
+          <Grid item xs>
+            <Paper className={classes.paper}>xs</Paper>
+          </Grid>
+          <Grid item xs={6}>
+            <Paper className={classes.paper}>xs=6</Paper>
+          </Grid>
+          <Grid item xs>
+            <Paper className={classes.paper}>xs</Paper>
+          </Grid>
+        </Grid> */}
+      </div>
+    </Container>
   );
 }
