@@ -1,11 +1,10 @@
 import React from 'react';
-import {AppBar, Toolbar, IconButton, Typography, makeStyles} from '@material-ui/core';
-import MenuIcon from '@material-ui/icons/Menu';
-import './NavBar.css';
+import {AppBar, Toolbar, Typography, makeStyles} from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        background: theme.background,
+        background: '#ffffff',
+        color: theme.color
     },
 }));
 
@@ -15,9 +14,6 @@ function NavBar() {
         <div className="NavBar">
             <AppBar className={classes.root} position="relative">
                 <Toolbar>
-                    <IconButton edge="start" className="iconButton" color="inherit" aria-label="menu">
-                        <MenuIcon />
-                    </IconButton>
                     <Typography variant="h6">
                         The Anxious Turtle
                     </Typography>
