@@ -1,6 +1,5 @@
 import React from 'react';
 import './App.css';
-import NavBar from './components/NavBar';
 import Title from './components/Title';
 import PostList from './components/PostList';
 import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
@@ -13,7 +12,6 @@ function App() {
   return (
     <div className="App">
       <ThemeProvider theme={theme}>
-        {/* <NavBar /> */}
         <Title />
         <PostList />
         <footer>
