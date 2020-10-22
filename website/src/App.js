@@ -1,24 +1,24 @@
 import React from 'react';
 import './App.css';
-import NavBar from './NavBar/NavBar'
-import Title from './Title/Title'
-import PostList from './PostList/PostList'
+import NavBar from './components/NavBar';
+import Title from './components/Title';
+import PostList from './components/PostList';
 import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
 const theme = createMuiTheme({
-  background: 'linear-gradient(45deg, #000080 30%, #bada55 90%)',
+  color: '#000000',
 });
 
 function App() {
   return (
     <div className="App">
-      <head>
-        <title>The Anxious Turtle</title>
-      </head>
       <ThemeProvider theme={theme}>
-        <NavBar />
+        {/* <NavBar /> */}
         <Title />
         <PostList />
+        <footer>
+          <h6>The-Anxious-Turtle @ 2020</h6>
+        </footer>
       </ThemeProvider>
     </div>
   );
