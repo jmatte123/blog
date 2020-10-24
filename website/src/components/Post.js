@@ -16,6 +16,7 @@ const useStyles = makeStyles((theme) => ({
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
+      overflow: 'scroll',
     },
     title: {
         padding: 20,
@@ -31,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
     },
     content: {
         marginTop: 30,
-        fontFamily: 'Roboto'
+        fontFamily: 'Roboto',
     },
 }));
 
