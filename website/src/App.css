@@ -4,3 +4,9 @@
   justify-content: center;
   background-color: inherit;
 }
+
+footer {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 20px;
+}

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Container, Box } from '@material-ui/core';
+import { Container, Box, CircularProgress } from '@material-ui/core';
 import Post from './Post';
 
 const useStyles = makeStyles((theme) => ({
@@ -9,6 +9,12 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'space-between',
+  },
+  progress: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: 200,
   },
 }));
 
@@ -26,6 +32,16 @@ export default function PostList() {
     };
     fetchData();
   }, []);
+
+  if (postsMap === null) {
+    return (
+      <Container lg>
+        <Box className={classes.progress}>
+          <CircularProgress />
+        </Box>
+      </Container>
+    );
+  }
 
   return (
     <Container lg>
