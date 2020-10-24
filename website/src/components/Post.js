@@ -16,11 +16,11 @@ const useStyles = makeStyles((theme) => ({
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
-      overflow: 'scroll',
+      overflow: 'auto',
     },
     title: {
         padding: 20,
-        font: 'Anton',
+        fontFamily: 'Anton',
         fontWeight: 'bolder',
         fontSize: 50,
         letterSpacing: -1,
