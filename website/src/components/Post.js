@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
     },
     title: {
         padding: 20,
-        fontFamily: 'Anton',
+        fontFamily: theme.fontFamily,
         fontWeight: 'bolder',
         fontSize: 50,
         letterSpacing: -1,

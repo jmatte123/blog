@@ -7,7 +7,7 @@ const useStyles = makeStyles((theme) => ({
         alignItems: 'center',
         justifyContent: 'center',
         height: 300,
-        fontFamily: 'Anton',
+        fontFamily: theme.fontFamily,
         background: 'linear-gradient(45deg, #00ccff 30%, #00ff00 90%)',
         color: '#ffffff',
         borderRadius: 10,

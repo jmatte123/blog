@@ -6,6 +6,7 @@ import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
 const theme = createMuiTheme({
   color: '#000000',
+  fontFamily: 'Anton',
 });
 
 function App() {
