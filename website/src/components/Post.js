@@ -34,6 +34,7 @@ const useStyles = makeStyles((theme) => ({
         marginTop: 30,
         fontFamily: 'Roboto',
         marginBottom: 30,
+        paddingBottom: 30,
     },
 }));
 
