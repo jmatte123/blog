@@ -9,7 +9,7 @@ router.use(function(req, res, next) {
 });
 
 router.get("/posts", async (req, res) => {
-	const posts = await Post.find({}).sort({createdAt: 'descending'});
+	const posts = await Post.find({});
 	res.send(posts);
 });
 
