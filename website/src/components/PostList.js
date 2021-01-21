@@ -24,9 +24,10 @@ export default function PostList() {
 
   useEffect(() => {   
     async function fetchData() {
-      const response = await fetch('https://the-anxious-turtle.com/api/posts');
-      // const response = await fetch('http://localhost:3010/api/posts');
+      // const response = await fetch('https://the-anxious-turtle.com/api/posts');
+      const response = await fetch('http://localhost:3010/api/posts');
       const myJson = await response.json();
+      myJson.reverse();
       setPostsMap(myJson.map((value) =>
         <Post post={value} />
       ));
